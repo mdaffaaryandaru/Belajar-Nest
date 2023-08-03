@@ -1,0 +1,35 @@
+catatan pembelajaran : 
+1. Prisma yang mengatur seluruh database dan terhubung ke postgre, tanpa mendownload aplikasi seperti debeaver dll (karena hanya tinggal membuka prisma studio)
+
+2. DTO (Data Transfer Object) yang mengatur seluruh transfer data dari user
+
+3. flow yang di buat seperti ini start nest js >>>>>> mengeksekusi auth controller >>>>> mengeksekusi auth.service >>>>>> membuat logika create data yang datanya di ambil dari auth dto dan di validasi apakah akun tersebut berupa string dan email >>>>>>>> ketika datanya telah di ambil dari auth.dto, data tersebut di lempar ke prisma yang mengatur database
+
+4. prisma itu di gunakan untuk mengatur database tanpa harus membuka aplikasi seperti dbeaver dll dan prisma memiliki browser seperti php my admin untuk mengatur semua data base yang ada.prisma juga merupakan sebuah orm yang
+berfungsi untuk merubah sebuah table yang ada di schema prisma menjadi suatu object yang nanti nya mudah di gunakan.
+
+5. nest js config berfungsi agar database tidak di tulis secara hardcode di dalam modul prisma, jadi hanya menulis DATABASE_URL saat pemanggilan database contoh : postgresql://postgres:123@localhost:5434/nest?schema=public jadi >>> DATABASE_URL Fungsi config bisa di gunakan dalam component yang memiliki @injected
+
+6. strategy dalam jwt.strategy berfungsi sebagai memvalidasi token yang sudah di kirim kan oleh user apakah token tersebut sudah kadaluarsa apa belum / token tersebut benar atau tidak 
+
+7. Guards berfungsi untuk menjaga route dari sign in ke users, ketika pengguna sign in routes akan mengarahkan ke users dan akan di validasi dengan guards. apakah users sesuai dengan strategy yang telah di buat seperti apakah token sudah kada luarsa / Apakah token tersebut benar atau tidak 
+    jika tidak sesuai dengan ketentuan di atas maka guards akan memblocknya 
+
+8. sebelum ada guards token bisa di gunakan dalam waktu tertentu. jadi jika 15 menit sudah habis, token masih bisa di gunakan ke users/me dan dan di buatlah strategy agar memblocknya 
+
+9. decorator berguna untuk mendapatkan data user secara custom, semisalkan kita ingin mendapatkan hanya data email user. kita bisa menggunakan dekorator 
+
+10. phactum e2e berfungsi sebagai test tanpa harus ke insomnia
+
+11. .env-cli untuk membuat route ke database baru agar tidak menggunakan dev database (seperti prod dan dev pada my telu)
+
+<COMPONENT>
+1. Untuk mengakses database menggunakan prisma
+2. untuk memvalidasi harus menggunakan email dan tipe data email menggunakan dto
+3. untuk menghide url base menggunakan config agar bisa mengaksesnya lewat .env
+4. untuk middleware menggunakan passport
+5. untuk melempar token saat user login atau signup menggunakan jwt
+6. untuk logika saat login atau signup ada di auth service
+7. untuk kontrol API menggunakan controller
+8. semua root ada di module
+9. untuk mengetes semua api tanpa harus menggunakan insomnia yaitu menggunakan phactum
